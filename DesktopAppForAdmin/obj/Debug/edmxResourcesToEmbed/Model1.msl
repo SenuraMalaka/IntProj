@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ipModelStoreContainer" CdmEntityContainer="ipEntities">
+    <EntitySetMapping Name="Batches">
+      <EntityTypeMapping TypeName="ipModel.Batch">
+        <MappingFragment StoreEntitySet="Batch">
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="FID" ColumnName="FID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Computers">
+      <EntityTypeMapping TypeName="ipModel.Computer">
+        <MappingFragment StoreEntitySet="Computer">
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+          <ScalarProperty Name="Proccessor" ColumnName="Proccessor" />
+          <ScalarProperty Name="Ram" ColumnName="Ram" />
+          <ScalarProperty Name="HID" ColumnName="HID" />
+          <ScalarProperty Name="LID" ColumnName="LID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Degrees">
+      <EntityTypeMapping TypeName="ipModel.Degree">
+        <MappingFragment StoreEntitySet="Degree">
+          <ScalarProperty Name="DID" ColumnName="DID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="University" ColumnName="University" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Faculties">
+      <EntityTypeMapping TypeName="ipModel.Faculty">
+        <MappingFragment StoreEntitySet="Faculty">
+          <ScalarProperty Name="FID" ColumnName="FID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Halls">
+      <EntityTypeMapping TypeName="ipModel.Hall">
+        <MappingFragment StoreEntitySet="Hall">
+          <ScalarProperty Name="HID" ColumnName="HID" />
+          <ScalarProperty Name="FID" ColumnName="FID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Labs">
+      <EntityTypeMapping TypeName="ipModel.Lab">
+        <MappingFragment StoreEntitySet="Lab">
+          <ScalarProperty Name="LID" ColumnName="LID" />
+          <ScalarProperty Name="FID" ColumnName="FID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lecturers">
+      <EntityTypeMapping TypeName="ipModel.Lecturer">
+        <MappingFragment StoreEntitySet="Lecturer">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lecturer_Hall">
+      <EntityTypeMapping TypeName="ipModel.Lecturer_Hall">
+        <MappingFragment StoreEntitySet="Lecturer_Hall">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="HID" ColumnName="HID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Softwares">
+      <EntityTypeMapping TypeName="ipModel.Software">
+        <MappingFragment StoreEntitySet="Software">
+          <ScalarProperty Name="SID" ColumnName="SID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Key_" ColumnName="Key_" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staffs">
+      <EntityTypeMapping TypeName="ipModel.Staff">
+        <MappingFragment StoreEntitySet="Staff">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="ipModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="S_ID" ColumnName="S_ID" />
+          <ScalarProperty Name="DID" ColumnName="DID" />
+          <ScalarProperty Name="BID" ColumnName="BID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="ipModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Tel_no" ColumnName="Tel_no" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Computer_Software" TypeName="ipModel.Computer_Software" StoreEntitySet="Computer_Software">
+      <EndProperty Name="Computer">
+        <ScalarProperty Name="CID" ColumnName="CID" />
+      </EndProperty>
+      <EndProperty Name="Software">
+        <ScalarProperty Name="SID" ColumnName="SID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Lab_Student" TypeName="ipModel.Lab_Student" StoreEntitySet="Lab_Student">
+      <EndProperty Name="Lab">
+        <ScalarProperty Name="LID" ColumnName="LID" />
+      </EndProperty>
+      <EndProperty Name="Student">
+        <ScalarProperty Name="Username" ColumnName="Username" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="329393a1d4a34737b04907677f254e49" Name="Diagram1">
+        <EntityTypeShape EntityType="ipModel.Batch" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ipModel.Computer" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ipModel.Degree" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ipModel.Faculty" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ipModel.Hall" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ipModel.Lab" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ipModel.Lecturer" Width="1.5" PointX="3" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ipModel.Lecturer_Hall" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ipModel.Software" Width="1.5" PointX="7.5" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="ipModel.Staff" Width="1.5" PointX="5.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ipModel.Student" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ipModel.User" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <AssociationConnector Association="ipModel.fk_batch_FID" ManuallyRouted="false" />
+        <AssociationConnector Association="ipModel.fk_Student_BID" ManuallyRouted="false" />
+        <AssociationConnector Association="ipModel.fk_Computer_Hall" ManuallyRouted="false" />
+        <AssociationConnector Association="ipModel.fk_Computer_Lab" ManuallyRouted="false" />
+        <AssociationConnector Association="ipModel.fk_Student_DID" ManuallyRouted="false" />
+        <AssociationConnector Association="ipModel.fk_Hall_FID" ManuallyRouted="false" />
+        <AssociationConnector Association="ipModel.fk_Lab_FID" ManuallyRouted="false" />
+        <AssociationConnector Association="ipModel.fk_Lecturer_Hall_HID" ManuallyRouted="false" />
+        <AssociationConnector Association="ipModel.fk_Lecturer" ManuallyRouted="false" />
+        <AssociationConnector Association="ipModel.fk_Lecturer_Hall_Username" ManuallyRouted="false" />
+        <AssociationConnector Association="ipModel.fk_Staff" ManuallyRouted="false" />
+        <AssociationConnector Association="ipModel.fk_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="ipModel.Computer_Software" ManuallyRouted="false" />
+        <AssociationConnector Association="ipModel.Lab_Student" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

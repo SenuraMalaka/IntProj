@@ -1,0 +1,14 @@
+c:\users\dell\documents\visual studio 2015\Projects\ResourceAlloSys\DesktopAppForAdmin\bin\Debug\DesktopAppForAdmin.exe.config
+c:\users\dell\documents\visual studio 2015\Projects\ResourceAlloSys\DesktopAppForAdmin\bin\Debug\DesktopAppForAdmin.exe
+c:\users\dell\documents\visual studio 2015\Projects\ResourceAlloSys\DesktopAppForAdmin\bin\Debug\DesktopAppForAdmin.pdb
+c:\users\dell\documents\visual studio 2015\Projects\ResourceAlloSys\DesktopAppForAdmin\obj\Debug\DesktopAppForAdmin.csprojResolveAssemblyReference.cache
+c:\users\dell\documents\visual studio 2015\Projects\ResourceAlloSys\DesktopAppForAdmin\obj\Debug\DesktopAppForAdmin.Login.resources
+c:\users\dell\documents\visual studio 2015\Projects\ResourceAlloSys\DesktopAppForAdmin\obj\Debug\DesktopAppForAdmin.Properties.Resources.resources
+c:\users\dell\documents\visual studio 2015\Projects\ResourceAlloSys\DesktopAppForAdmin\obj\Debug\DesktopAppForAdmin.csproj.GenerateResource.Cache
+c:\users\dell\documents\visual studio 2015\Projects\ResourceAlloSys\DesktopAppForAdmin\obj\Debug\DesktopAppForAdmin.exe
+c:\users\dell\documents\visual studio 2015\Projects\ResourceAlloSys\DesktopAppForAdmin\obj\Debug\DesktopAppForAdmin.pdb
+C:\Users\DELL\documents\visual studio 2015\Projects\ResourceAlloSys\DesktopAppForAdmin\obj\Debug\DesktopAppForAdmin.Home.resources
+C:\Users\DELL\documents\visual studio 2015\Projects\ResourceAlloSys\DesktopAppForAdmin\bin\Debug\EntityFramework.dll
+C:\Users\DELL\documents\visual studio 2015\Projects\ResourceAlloSys\DesktopAppForAdmin\bin\Debug\EntityFramework.xml
+C:\Users\DELL\Documents\Visual Studio 2015\Projects\ResourceAlloSys\DesktopAppForAdmin\obj\Debug\DesktopAppForAdmin.UserDetails.resources
+C:\Users\DELL\Documents\Visual Studio 2015\Projects\ResourceAlloSys\DesktopAppForAdmin\obj\Debug\DesktopAppForAdmin.LoadingScreen.resources

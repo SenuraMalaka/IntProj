@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ipModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Batch">
+    <Key>
+      <PropertyRef Name="BID" />
+    </Key>
+    <Property Name="BID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Faculty" Relationship="Self.fk_batch_FID" FromRole="Batch" ToRole="Faculty" />
+    <NavigationProperty Name="Students" Relationship="Self.fk_Student_BID" FromRole="Batch" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Computer">
+    <Key>
+      <PropertyRef Name="CID" />
+    </Key>
+    <Property Name="CID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Brand" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Proccessor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ram" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Hall" Relationship="Self.fk_Computer_Hall" FromRole="Computer" ToRole="Hall" />
+    <NavigationProperty Name="Lab" Relationship="Self.fk_Computer_Lab" FromRole="Computer" ToRole="Lab" />
+    <NavigationProperty Name="Software" Relationship="Self.Computer_Software" FromRole="Computer" ToRole="Software" />
+  </EntityType>
+  <EntityType Name="Degree">
+    <Key>
+      <PropertyRef Name="DID" />
+    </Key>
+    <Property Name="DID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="University" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Country" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Students" Relationship="Self.fk_Student_DID" FromRole="Degree" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Faculty">
+    <Key>
+      <PropertyRef Name="FID" />
+    </Key>
+    <Property Name="FID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Batches" Relationship="Self.fk_batch_FID" FromRole="Faculty" ToRole="Batch" />
+    <NavigationProperty Name="Halls" Relationship="Self.fk_Hall_FID" FromRole="Faculty" ToRole="Hall" />
+    <NavigationProperty Name="Labs" Relationship="Self.fk_Lab_FID" FromRole="Faculty" ToRole="Lab" />
+  </EntityType>
+  <EntityType Name="Hall">
+    <Key>
+      <PropertyRef Name="HID" />
+    </Key>
+    <Property Name="HID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Computers" Relationship="Self.fk_Computer_Hall" FromRole="Hall" ToRole="Computer" />
+    <NavigationProperty Name="Faculty" Relationship="Self.fk_Hall_FID" FromRole="Hall" ToRole="Faculty" />
+    <NavigationProperty Name="Lecturer_Hall" Relationship="Self.fk_Lecturer_Hall_HID" FromRole="Hall" ToRole="Lecturer_Hall" />
+  </EntityType>
+  <EntityType Name="Lab">
+    <Key>
+      <PropertyRef Name="LID" />
+    </Key>
+    <Property Name="LID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Computers" Relationship="Self.fk_Computer_Lab" FromRole="Lab" ToRole="Computer" />
+    <NavigationProperty Name="Faculty" Relationship="Self.fk_Lab_FID" FromRole="Lab" ToRole="Faculty" />
+    <NavigationProperty Name="Students" Relationship="Self.Lab_Student" FromRole="Lab" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Lecturer">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Subject" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Qualification" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Salary" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="User" Relationship="Self.fk_Lecturer" FromRole="Lecturer" ToRole="Users" />
+    <NavigationProperty Name="Lecturer_Hall" Relationship="Self.fk_Lecturer_Hall_Username" FromRole="Lecturer" ToRole="Lecturer_Hall" />
+  </EntityType>
+  <EntityType Name="Lecturer_Hall">
+    <Key>
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="HID" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Hall" Relationship="Self.fk_Lecturer_Hall_HID" FromRole="Lecturer_Hall" ToRole="Hall" />
+    <NavigationProperty Name="Lecturer" Relationship="Self.fk_Lecturer_Hall_Username" FromRole="Lecturer_Hall" ToRole="Lecturer" />
+  </EntityType>
+  <EntityType Name="Software">
+    <Key>
+      <PropertyRef Name="SID" />
+    </Key>
+    <Property Name="SID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Key_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Computers" Relationship="Self.Computer_Software" FromRole="Software" ToRole="Computer" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Position" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Salary" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="User" Relationship="Self.fk_Staff" FromRole="Staff" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="S_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Batch" Relationship="Self.fk_Student_BID" FromRole="Student" ToRole="Batch" />
+    <NavigationProperty Name="Degree" Relationship="Self.fk_Student_DID" FromRole="Student" ToRole="Degree" />
+    <NavigationProperty Name="User" Relationship="Self.fk_Student" FromRole="Student" ToRole="Users" />
+    <NavigationProperty Name="Labs" Relationship="Self.Lab_Student" FromRole="Student" ToRole="Lab" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Lname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Tel_no" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Lecturer" Relationship="Self.fk_Lecturer" FromRole="Users" ToRole="Lecturer" />
+    <NavigationProperty Name="Staff" Relationship="Self.fk_Staff" FromRole="Users" ToRole="Staff" />
+    <NavigationProperty Name="Student" Relationship="Self.fk_Student" FromRole="Users" ToRole="Student" />
+  </EntityType>
+  <Association Name="fk_batch_FID">
+    <End Role="Faculty" Type="Self.Faculty" Multiplicity="1" />
+    <End Role="Batch" Type="Self.Batch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faculty">
+        <PropertyRef Name="FID" />
+      </Principal>
+      <Dependent Role="Batch">
+        <PropertyRef Name="FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Student_BID">
+    <End Role="Batch" Type="Self.Batch" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Batch">
+        <PropertyRef Name="BID" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="BID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Computer_Hall">
+    <End Role="Hall" Type="Self.Hall" Multiplicity="1" />
+    <End Role="Computer" Type="Self.Computer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hall">
+        <PropertyRef Name="HID" />
+      </Principal>
+      <Dependent Role="Computer">
+        <PropertyRef Name="HID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Computer_Lab">
+    <End Role="Lab" Type="Self.Lab" Multiplicity="1" />
+    <End Role="Computer" Type="Self.Computer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lab">
+        <PropertyRef Name="LID" />
+      </Principal>
+      <Dependent Role="Computer">
+        <PropertyRef Name="LID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Student_DID">
+    <End Role="Degree" Type="Self.Degree" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Degree">
+        <PropertyRef Name="DID" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="DID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Hall_FID">
+    <End Role="Faculty" Type="Self.Faculty" Multiplicity="1" />
+    <End Role="Hall" Type="Self.Hall" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faculty">
+        <PropertyRef Name="FID" />
+      </Principal>
+      <Dependent Role="Hall">
+        <PropertyRef Name="FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Lab_FID">
+    <End Role="Faculty" Type="Self.Faculty" Multiplicity="1" />
+    <End Role="Lab" Type="Self.Lab" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faculty">
+        <PropertyRef Name="FID" />
+      </Principal>
+      <Dependent Role="Lab">
+        <PropertyRef Name="FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Lecturer_Hall_HID">
+    <End Role="Hall" Type="Self.Hall" Multiplicity="1" />
+    <End Role="Lecturer_Hall" Type="Self.Lecturer_Hall" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hall">
+        <PropertyRef Name="HID" />
+      </Principal>
+      <Dependent Role="Lecturer_Hall">
+        <PropertyRef Name="HID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Lecturer">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Lecturer" Type="Self.Lecturer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Lecturer">
+        <PropertyRef Name="Username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Lecturer_Hall_Username">
+    <End Role="Lecturer" Type="Self.Lecturer" Multiplicity="1" />
+    <End Role="Lecturer_Hall" Type="Self.Lecturer_Hall" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lecturer">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Lecturer_Hall">
+        <PropertyRef Name="Username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Staff">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="Username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Student">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="Username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Computer_Software">
+    <End Role="Computer" Type="Self.Computer" Multiplicity="*" />
+    <End Role="Software" Type="Self.Software" Multiplicity="0..1" />
+  </Association>
+  <Association Name="Lab_Student">
+    <End Role="Lab" Type="Self.Lab" Multiplicity="*" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="ipEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Batches" EntityType="Self.Batch" />
+    <EntitySet Name="Computers" EntityType="Self.Computer" />
+    <EntitySet Name="Degrees" EntityType="Self.Degree" />
+    <EntitySet Name="Faculties" EntityType="Self.Faculty" />
+    <EntitySet Name="Halls" EntityType="Self.Hall" />
+    <EntitySet Name="Labs" EntityType="Self.Lab" />
+    <EntitySet Name="Lecturers" EntityType="Self.Lecturer" />
+    <EntitySet Name="Lecturer_Hall" EntityType="Self.Lecturer_Hall" />
+    <EntitySet Name="Softwares" EntityType="Self.Software" />
+    <EntitySet Name="Staffs" EntityType="Self.Staff" />
+    <EntitySet Name="Students" EntityType="Self.Student" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="fk_batch_FID" Association="Self.fk_batch_FID">
+      <End Role="Faculty" EntitySet="Faculties" />
+      <End Role="Batch" EntitySet="Batches" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Student_BID" Association="Self.fk_Student_BID">
+      <End Role="Batch" EntitySet="Batches" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Computer_Hall" Association="Self.fk_Computer_Hall">
+      <End Role="Hall" EntitySet="Halls" />
+      <End Role="Computer" EntitySet="Computers" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Computer_Lab" Association="Self.fk_Computer_Lab">
+      <End Role="Lab" EntitySet="Labs" />
+      <End Role="Computer" EntitySet="Computers" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Student_DID" Association="Self.fk_Student_DID">
+      <End Role="Degree" EntitySet="Degrees" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Hall_FID" Association="Self.fk_Hall_FID">
+      <End Role="Faculty" EntitySet="Faculties" />
+      <End Role="Hall" EntitySet="Halls" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Lab_FID" Association="Self.fk_Lab_FID">
+      <End Role="Faculty" EntitySet="Faculties" />
+      <End Role="Lab" EntitySet="Labs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Lecturer_Hall_HID" Association="Self.fk_Lecturer_Hall_HID">
+      <End Role="Hall" EntitySet="Halls" />
+      <End Role="Lecturer_Hall" EntitySet="Lecturer_Hall" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Lecturer" Association="Self.fk_Lecturer">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Lecturer" EntitySet="Lecturers" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Lecturer_Hall_Username" Association="Self.fk_Lecturer_Hall_Username">
+      <End Role="Lecturer" EntitySet="Lecturers" />
+      <End Role="Lecturer_Hall" EntitySet="Lecturer_Hall" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Staff" Association="Self.fk_Staff">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Staff" EntitySet="Staffs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Student" Association="Self.fk_Student">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="Computer_Software" Association="Self.Computer_Software">
+      <End Role="Computer" EntitySet="Computers" />
+      <End Role="Software" EntitySet="Softwares" />
+    </AssociationSet>
+    <AssociationSet Name="Lab_Student" Association="Self.Lab_Student">
+      <End Role="Lab" EntitySet="Labs" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
